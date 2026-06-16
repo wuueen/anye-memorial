@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗夜将至 · 金在民纪念页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #222222;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --gold: #d4a574;
+            --gold-light: #e8c9a0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-quote {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            letter-spacing: 0.3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .photo-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .photo-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .photo-placeholder .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .photo-info {
+            padding: 1.5rem;
+        }
+
+        .photo-title {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.35rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* DM Section */
+        .dm-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .dm-name {
+            font-size: 1.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .dm-quote {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Photo Grid for Upload */
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .upload-card {
+            aspect-ratio: 1;
+            background: var(--bg-card);
+            border: 2px dashed var(--text-secondary);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-card:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .upload-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--bg-card);
+            margin-top: 5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: 0.3rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .dm-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">暗夜将至</h1>
+            <p class="hero-subtitle">金在民 · 摄影视角</p>
+            <p class="hero-quote">"拍姐姐赛车冲过终点时扬起的尘土，拍奶奶看完文件后，偶尔抬头时，窗外落在她身上的夕阳。"</p>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="section">
+        <h2 class="section-title">珍贵瞬间</h2>
+        <div class="gallery">
+            <div class="photo-card fade-in delay-1">
+                <div class="photo-placeholder">
+                    <div class="icon">📸</div>
+                    <p>与金在秀的合照</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">游戏后替换为实际照片</p>
+                </div>
+                <div class="photo-info">
+                    <h3 class="photo-title">姐弟时光</h3>
+                    <p class="photo-description">与姐姐金在秀的珍贵合影，记录下财阀家族中难得的温情时刻。</p>
+                </div>
+            </div>
+
+            <div class="photo-card fade-in delay-2">
+                <div class="photo-placeholder">
+                    <div class="icon">🌅</div>
+                    <p>造景照片</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">游戏后替换为实际照片</p>
+                </div>
+                <div class="photo-info">
+                    <h3 class="photo-title">专属场景</h3>
+                    <p class="photo-description">每对CP都有精心设计的造景，这是属于金在民和白瑞妍的场景。</p>
+                </div>
+            </div>
+
+            <div class="photo-card fade-in delay-3">
+                <div class="photo-placeholder">
+                    <div class="icon">👨‍👩‍👧</div>
+                    <p>家族回忆</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">游戏后替换为实际照片</p>
+                </div>
+                <div class="photo-info">
+                    <h3 class="photo-title">奶奶与姐姐</h3>
+                    <p class="photo-description">金在民镜头下的奶奶和姐姐，记录下那些温暖的日常瞬间。</p>
+                </div>
+            </div>
+
+            <div class="photo-card fade-in delay-1">
+                <div class="photo-placeholder">
+                    <div class="icon">💒</div>
+                    <p>写真馆留念</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">游戏后替换为实际照片</p>
+                </div>
+                <div class="photo-info">
+                    <h3 class="photo-title">写真时刻</h3>
+                    <p class="photo-description">在写真馆拍摄的珍贵照片，记录下最真实的瞬间。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section">
+        <h2 class="section-title">情感历程</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <h3 class="timeline-title">姐弟羁绊</h3>
+                <p class="timeline-content">金在民与姐姐金在秀，从小一起长大。姐姐总是保护着他，而他则用相机记录下姐姐的每一个重要时刻。从赛车梦到家族责任，姐弟俩始终相互扶持。</p>
+            </div>
+
+            <div class="timeline-item fade-in delay-1">
+                <h3 class="timeline-title">家族使命</h3>
+                <p class="timeline-content">作为SOL财阀家族的次孙，金在民背负着家族的期望。他选择成为外交官，是为了能更好地守护姐姐和奶奶。在权力与亲情之间，他始终选择后者。</p>
+            </div>
+
+            <div class="timeline-item fade-in delay-2">
+                <h3 class="timeline-title">爱情与抉择</h3>
+                <p class="timeline-content">与白瑞妍的爱情，如同罗密欧与朱丽叶，注定充满波折。两个家族的对立，让他们的爱情之路布满荆棘。但金在民始终相信，爱情与亲情不该二选一。</p>
+            </div>
+
+            <div class="timeline-item fade-in delay-3">
+                <h3 class="timeline-title">摄影的意义</h3>
+                <p class="timeline-content">对金在民而言，摄影不仅是爱好，更是记录珍贵瞬间的方式。他用镜头捕捉家人的笑容、泪水、成长，这些照片成为他最宝贵的财富。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DM Section -->
+    <section class="section">
+        <div class="dm-section fade-in">
+            <h2 class="dm-name">金在秀 · 姐姐</h2>
+            <p class="dm-quote">"小辛巴，奶奶的小辛巴。"<br><br>
+            金在秀，SOL财阀家族的长孙，金在民的姐姐。她性格张扬，敢爱敢恨，总是用最热烈的方式表达对弟弟的爱。从小时候保护弟弟，到长大后共同守护家族，姐弟俩的感情始终深厚。</p>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="section">
+        <h2 class="section-title">游戏照片</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+            游戏过程中拍摄的照片，可以添加到这里
+        </p>
+        <div class="upload-grid">
+            <div class="upload-card">
+                <div class="icon">📷</div>
+                <p>添加照片</p>
+            </div>
+            <div class="upload-card">
+                <div class="icon">📷</div>
+                <p>添加照片</p>
+            </div>
+            <div class="upload-card">
+                <div class="icon">📷</div>
+                <p>添加照片</p>
+            </div>
+            <div class="upload-card">
+                <div class="icon">📷</div>
+                <p>添加照片</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>暗夜将至 · 金在民纪念页</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">"我很少拍照，不过我很喜欢给别人拍照。"</p>
+    </footer>
+
+    <script>
+        // Simple fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.timeline-item, .photo-card, .dm-section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add click handler for upload cards
+            document.querySelectorAll('.upload-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // This would typically open a file picker
+                    // For now, just show an alert
+                    alert('点击此处添加游戏照片');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
